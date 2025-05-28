@@ -1,78 +1,64 @@
-const addItem = document.getElementsByClassName(action-button)
-// const cart = document.getElementsByClassName(cart)
+document.addEventListener("onmousemove", (event) => {
+  const circle = document.getElementById("mouse");
+  circle.style.left = `${event.pageX}px`;
+  circle.style.top = `${event.pageY}px`;
+});
 
-document.createElement('li')
 
+  let totalPrice = 0;
+  let itemCount = 0;
+  const cartList = document.getElementById('cart-list');
+  const cartTotal = document.getElementById('cart-total');
+  const addedItems = new Map();
+  
+  
 
-    // Sample products
-    const products = [
-      { id: 1, name: 'Wireless Headphones', price: 89.99 },
-      { id: 2, name: 'Bluetooth Speaker', price: 45.50 },
-      { id: 3, name: 'Smart Watch', price: 120.00 },
-      { id: 4, name: 'Portable Charger', price: 29.95 },
-      { id: 5, name: 'Tablet Stand', price: 15.00 }
-    ];
-    const productListEl = document.getElementById('product-list');
-    const cartListEl = document.getElementById('cart-list');
-    const cartTotalEl = document.getElementById('cart-total');
+  document.querySelectorAll('.add-item').forEach(button => {
+    button.addEventListener('click', (event) => {
+      const btn = event.target;
+      const listItem = btn.closest('li');
+      if (!listItem) return;
 
-     let cart = {};
-    function formatPrice(num) {
-      return `$${num.toFixed(2)}`;
-    }
-    // Render products listing
-    function renderProducts() {
-      productListEl.innerHTML = '';
-      products.forEach(product => {
-        const li = document.createElement('li');
-        li.className = 'product';
-        li.innerHTML = `
-          <span class="name">${product.name}</span>
-          <span class="price">${formatPrice(product.price)}</span>
-          <button class="add-btn" data-id="${product.id}">Add to Cart</button>
-        `;
-        productListEl.appendChild(li);
-      });
-    }
-    // Render cart items
-    function renderCart() {
-      cartListEl.innerHTML = '';
-      let total = 0;
-      for (const productId in cart) {
-        if (cart.hasOwnProperty(productId)) {
-          const item = cart[productId];
-          const subtotal = item.price * item.quantity;
-          total += subtotal;
-          const li = document.createElement('li');
-          li.className = 'cart-item';
-          li.innerHTML = `
-            <span class="item-name">${item.name}</span>
-            <span class="item-qty">x${item.quantity}</span>
-            <span class="item-price">${formatPrice(subtotal)}</span>
-          `;
-          cartListEl.appendChild(li);
-        }
-      }
-      cartTotalEl.textContent = `Total: ${formatPrice(total)}`;
-    }
+      const service = listItem.firstChild.textContent.trim();
+      const priceText = listItem.querySelector('.price').textContent.trim();
+      const price = parseFloat(priceText.replace('$', ''));
 
-        // Add item to cart
-    function addToCart(productId) {
-      const product = products.find(p => p.id === productId);
-      if (!product) return;
-      if (cart[productId]) {
-        cart[productId].quantity++;
+      if (addedItems.has(service)) {
+        // Remove item
+        const cartItem = addedItems.get(service);
+        cartList.removeChild(cartItem);
+        addedItems.delete(service);
+        totalPrice -= price;
+        btn.textContent = "Add item";
+        itemCount--;
       } else {
-        cart[productId] = {...product, quantity: 1};
+        // Add item
+        itemCount++;
+        const cartItem = document.createElement('div');
+        cartItem.innerHTML = ` <p>${itemCount}</p> <p>${service} </p> $${price.toFixed(2)}`;
+        cartItem.classList.add("added-items")
+        cartList.appendChild(cartItem);
+        addedItems.set(service, cartItem);
+        totalPrice += price;
+        btn.textContent = "Remove item";
       }
-      renderCart();
-    }
-    // Event delegation for add buttons
-    productListEl.addEventListener('click', e => {
-      if (e.target.classList.contains('add-btn')) {
-        const id = parseInt(e.target.getAttribute('data-id'));
-        addToCart(id);
-      }
+
+      cartTotal.innerHTML = `<p>${totalPrice.toFixed(2)}</p>`;
     });
-    renderProducts();
-    renderCart();
+  });
+  
+  const mssg = document.getElementById('mssg')
+  document.getElementsByClassName('book-now').addEventListener("submit",(e) =>{
+    e.preventDefault();
+    mssg.style.display= "block";
+    emails();
+  })
+
+  function emails(){
+    const template = {
+      name: document.getElementById("#name").value,
+      email: document.querySelector('#email-id').value,
+      phone: document.querySelector("#phone-id").value
+    }
+    emailjs.send(service_agyio3d,template_8ujd6up,template).then(()=> alert("email sent!").catch(()=> alert("email not send!")))
+  }

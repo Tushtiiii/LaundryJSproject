@@ -5,7 +5,14 @@
 }
 html {
   font-size: 16px;
-  font-family: cursive;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+.mouse{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: rgba(251, 171, 131, 0.516);
+  opacity: blur(2px);
 }
 /* Navbar container */
 nav {
@@ -18,7 +25,8 @@ nav {
 }
 .nav-list {
   display: flex;
-  gap: 1rem;
+  justify-content: space-around;
+  gap: 3rem;
   list-style-type: none;
   flex-wrap: wrap;
 }
@@ -26,12 +34,16 @@ nav {
   text-decoration: none;
   color: gray;
 }
+.nav-item:hover{
+  border-bottom: 3px solid dodgerblue;
+  transition: all 10ms;
+}
 /* navbar username button */
 #username {
   border: none;
-  background-color: #88c4ff82;
+  background-color: #88c5ff82;
   border-radius: 10px;
-  padding: 0.4rem;
+  padding: 0.5rem;
   font-size: 1rem;
   padding: 0.5rem 2rem;
   color: dodgerblue;
@@ -52,18 +64,18 @@ img {
   height: auto;
 }
 img:hover{
-  animation: orbit 2s  infinite;
+  animation: orbit 2s  ;
   transition: all 2s ease-in;
 }
 @keyframes orbit{
   0%{
-    transform: translate(40px,0);
+    transform: translate(50px,0);
   }
   25%{
-    transform: translate(40px,40px);
+    transform: translate(50px,50px);
   }
   50%{
-    transform: translate(0,40px);
+    transform: translate(0,50px);
   }
   100%{
     transform: translate(0,0);
@@ -107,11 +119,11 @@ img:hover{
 }
 /* left content */
 .service-content {
-  padding: 4rem;
+  padding: 5rem;
   line-height: 2rem;
   margin: 2rem;
   height: 80vh;
-  width: 45vw;
+  width: 55vw;
   background-color: aliceblue;
   border-radius: 5%;
 }
@@ -121,15 +133,18 @@ img:hover{
   margin: 0.9rem;
   width: 100%;
 }
+.service ul li {
+  list-style-type: none;
+  line-height: 3em;
+}
 .price {
   color: dodgerblue; /* 2nd child of table */
 }
-.action-button {
+.add-item {
+  float: right;
   padding: 0.5rem 1.5rem; /* add tiem bttn*/
   border: none;
   border-radius: 10px;
-  color: red;
-  background-color: rgb(255, 224, 224);
 }
 
 #warn {
@@ -137,13 +152,40 @@ img:hover{
 }
 /* right cart table  */
 .cart{
-  padding: 4rem;
-  line-height: 1rem;
-  margin: 2rem;
-  height: 40vh;
+  padding: 2.5em;
+  line-height: 1.5em;
+  margin: 1em 2em;
+  height: 45vh;
   width: 90%;
   background-color: aliceblue;
   border-radius: 50px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.header{
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(250, 250, 250);
+}
+.cart-list{
+  list-style-type: none;
+  line-height: 2em;
+}
+.cart-list div{
+  display: flex;
+  justify-content: space-between;
+}
+.cart-total{
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(250, 250, 250);
+}
+.added-items{
+  display: flex;
+  justify-content: space-between;
+
 }
 /*  form table */
 form {
@@ -152,20 +194,20 @@ form {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  height: 35vh;
-  width: 40vw;
-  padding: 1.5rem 2.5rem;
-  margin: 2rem;
-  line-height: 2rem;
+  height: 30vh;
+  width: 50vw;
+  padding: 1em 2em;
+  margin: 2em;
+  line-height: 1.5em;
 }
 #email-id,
 #phone-no {
   width: 15vw;
-  height: 50%;
+  height: 40%;
 }
 #name {
   width: 35vw;
-  height: 50%;
+  height: 40%;
 }
 .book-now {
   width: 90%;
@@ -174,6 +216,9 @@ form {
   background-color: dodgerblue;
   color: white;
   padding: 0.5em 1em;
+}
+#mssg{
+  display: none;
 }
 /* feaure and subscribe section */
 .features,
@@ -202,7 +247,7 @@ form {
   gap: 1rem;
 }
 .forms input {
-  height: 40%;
+  height: 50%;
   width: 22vw;
   background-color: rgb(60, 156, 252);
   border: none;
@@ -240,7 +285,7 @@ footer div {
 
 
 /* for responsiveness  MOBILE*/
-@media (max-width: 426px) {
+@media (max-width: 526px) {
   html {
     font-size: 10px;
   }
@@ -258,10 +303,6 @@ footer div {
     padding: 0.2em;
     height: 1.6em;
   }
-  /* form {
-    height: 10vh;
-    padding: 1em;
-  } */
   #email-id,
 #phone-no ,#name{
     height: 10%;
