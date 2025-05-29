@@ -299,6 +299,9 @@ footer div {
     flex-wrap: wrap;
     height: 80vh;
   }
+  form{
+    height: 10%;
+  }
   .book-now{
     padding: 0.2em;
     height: 1.6em;
