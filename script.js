@@ -65,8 +65,8 @@ let totalPrice = 0;
   function emails(){
     let template = {
       name : document.getElementById("name").value,
-      email : document.querySelector('#email-id').value,
-      phone : document.querySelector("#phone-id").value,
+      email : document.getElementById("email-id").value,
+      phone : document.getElementById("phone-no").value,
     }
     emailjs.send("service_nyc5xdo","template_8ujd6up",template).then(()=> alert("email sent!").catch(()=> alert("email not send!")))
   }
