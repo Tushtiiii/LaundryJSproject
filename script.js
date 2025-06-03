@@ -32,7 +32,7 @@ let totalPrice = 0;
         itemCount--;
       } else {
         // Add item
-        itemCount++;
+        itemCount++;      
         const cartItem = document.createElement('div');
         cartItem.innerHTML = ` <p>${itemCount}</p> <p>${service} </p> $${price.toFixed(2)}`;
         cartItem.classList.add("added-items")
@@ -48,11 +48,8 @@ let totalPrice = 0;
   
   const mssg = document.getElementById('mssg')
   const submit = document.querySelector('.book-now')
-
-
- 
   submit.addEventListener('click', (e)=>{
-     if(itemCount == 0){
+    if(itemCount == 0){
     alert("please add items to cart")
     return;
   }
