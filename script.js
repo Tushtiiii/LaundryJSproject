@@ -4,6 +4,8 @@
 //   circle.style.top = `${event.pageY}px`;
 // });
 
+// document.getElementById(book).onclick(function() => {
+//    window.location.href=".services" });
 
 let totalPrice = 0;
   let itemCount = 0;

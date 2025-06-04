@@ -96,7 +96,8 @@ img:hover{
   font-size: 1.2rem;
 }
 
-.left button {
+.left a {
+  text-decoration: none;
   background-color: dodgerblue;
   border: none;
   color: white;
@@ -104,10 +105,7 @@ img:hover{
   padding: 1.2rem 2rem;
   border-radius: 20px;
 }
-.left button:hover{
-  transform: rotate(-5deg) scale(1.2);
-  transition: all 1s ease;
-}
+
 /* Achivements section  */
 .Achievements {
   background-color: dodgerblue;
