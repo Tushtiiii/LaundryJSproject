@@ -22,6 +22,7 @@ nav {
   height: 10vh;
   font-size: 1.5rem;
   flex-wrap: wrap;
+  /* position: fixed; */
 }
 .nav-list {
   display: flex;
@@ -156,7 +157,7 @@ img:hover{
   flex-direction: column;
 }
 .cart{
-  padding: 2.5em;
+  padding: 2em;
   line-height: 1.5em;
   margin: 1em 2em;
   height: 45vh;
@@ -171,18 +172,16 @@ img:hover{
 .header{
   display: flex;
   justify-content: space-between;
-  margin: 0.4em;
   background-color: rgb(250, 250, 250);
 }
 .cart-list{
+  height: 80%;
   list-style-type: none;
-  line-height: 2em;
+  line-height:2em;
 }
 .cart-list div{
-  height: 50%;
-    display: flex;
+  display: flex;
   justify-content: space-between;
-  align-items: flex-start;
 }
 .cart-total{
   display: flex;
